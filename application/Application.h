@@ -9,6 +9,7 @@
 #include <vulkan/vulkan.h>
 #include <glm/vec3.hpp>
 #include "Instance.h"
+#include "Device.h"
 
 using namespace glm;
 using namespace window;
@@ -23,6 +24,7 @@ namespace application {
 		vec3 applicationVersion;
 		vec3 engineVersion;
 		Instance instance;
+		Device device;
 	public:
 		Application(Window window, vec3 applicationVersion, vec3 engineVersion);
 		Application(unsigned int width, unsigned int height, std::string name, vec3 applicationVersion, vec3 engineVersion);

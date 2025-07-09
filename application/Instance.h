@@ -14,9 +14,6 @@ const bool enableValidationLayers = false;
 const bool enableValidationLayers = true;
 #endif
 
-
-
-
 using namespace glm;
 namespace application {
 	class Instance
@@ -30,14 +27,15 @@ namespace application {
 		VkDebugUtilsMessengerEXT debugMessenger;
 		virtual std::vector<VkExtensionProperties> getSupportedExtensionProperties();
 		virtual std::vector<const char*> getRequiredExtensionNames();
-		virtual VkDebugUtilsMessengerEXT setupDebugCallback();
 		virtual VkDebugUtilsMessengerCreateInfoEXT populateDebugCallback();
 
 	public:
 		Instance(std::string name, vec3 applicationVersion, vec3 engineVersion);
 		virtual VkInstance create();
+		virtual VkDebugUtilsMessengerEXT setupDebugCallback();
 		virtual Instance* destroy();
 		bool isValidationLayerSupported();
+		VkInstance getInstance() { return instance; };
 
 	};
 }

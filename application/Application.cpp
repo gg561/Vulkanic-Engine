@@ -4,12 +4,12 @@
 
 namespace application {
 
-	Application::Application(Window window, vec3 applicationVersion, vec3 engineVersion) : window{ window }, name{ window.getName() }, instance{ name, applicationVersion, engineVersion }
+	Application::Application(Window window, vec3 applicationVersion, vec3 engineVersion) : window{ window }, name{ window.getName() }, instance{ name, applicationVersion, engineVersion }, device { &instance }
 	{
 
 	}
 
-	Application::Application(unsigned int width, unsigned int height, std::string name, vec3 applicationVersion, vec3 engineVersion) : window{ Window(width, height, name) }, name{ name }, applicationVersion{ applicationVersion }, instance{ name, applicationVersion, engineVersion }
+	Application::Application(unsigned int width, unsigned int height, std::string name, vec3 applicationVersion, vec3 engineVersion) : window{ Window(width, height, name) }, name{ name }, applicationVersion{ applicationVersion }, instance{ name, applicationVersion, engineVersion }, device{ &instance }
 	{
 		
 	}
@@ -21,6 +21,9 @@ namespace application {
 	Application* Application::initVulkan() 
 	{
 		instance.create();
+		instance.setupDebugCallback();
+		device.create();
+		device.findMostSuitableDevice();
 		return this;
 	}
 
