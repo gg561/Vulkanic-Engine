@@ -26,6 +26,7 @@ namespace application {
 		devices = new std::vector<VkPhysicalDevice>(deviceCount);
 		vkEnumeratePhysicalDevices(instance->getInstance(), &deviceCount, devices->data());
 		VkPhysicalDevice physicalDevice = findMostSuitableDevice();
+		return this;
 	}
 
 	bool Device::isDeviceSuitable(VkPhysicalDevice device)
